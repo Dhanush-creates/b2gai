@@ -13,7 +13,7 @@ export default function SchemeDetails() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(`/api/schemes/${id}?lang=${language}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL || '/api'}/schemes/${id}?lang=${language}`);
         setScheme(await res.json());
       } catch (e) { console.error(e); }
       finally { setLoading(false); }

@@ -27,7 +27,7 @@ export default function EligibilityChecker() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('/api/eligibility', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || '/api'}/eligibility`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
@@ -40,7 +40,7 @@ export default function EligibilityChecker() {
   const handleVoiceResult = async (transcript) => {
     setParsing(true);
     try {
-      const res = await fetch('/api/parse-query', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || '/api'}/parse-query`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: transcript })
