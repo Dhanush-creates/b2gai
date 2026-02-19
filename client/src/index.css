@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #FAFAF8;
+    color: #2D3748;
+    line-height: 1.6;
+  }
+
+  html.large-font {
+    font-size: 20px;
+  }
+}
+
+@layer components {
+  /* ── Tricolor ribbon ── */
+  .tricolor-ribbon {
+    height: 3px;
+    background: linear-gradient(90deg, #FF9933 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #138808 66.66%);
+  }
+
+  /* ── Warm hero ── */
+  .hero-gradient {
+    background: linear-gradient(160deg, #1B3A5C 0%, #234E78 40%, #2D6296 100%);
+  }
+
+  /* ── Friendly cards ── */
+  .card-warm {
+    @apply bg-white rounded-2xl border border-gray-100 shadow-sm;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+  }
+
+  .card-warm:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+           font-semibold text-sm rounded-xl
+           transition-all duration-200 active:scale-[0.97];
+    background: linear-gradient(135deg, #FF9933, #F08030);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255,153,51,0.25);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 4px 14px rgba(255,153,51,0.35);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 
+           bg-[#1B3A5C] hover:bg-[#234E78] text-white font-semibold text-sm
+           rounded-xl shadow-sm hover:shadow-md
+           transition-all duration-200 active:scale-[0.97];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 
+           border-2 border-gray-200 text-gray-700 font-medium text-sm
+           rounded-xl hover:border-[#FF9933] hover:text-[#FF9933]
+           transition-all duration-200;
+  }
+
+  .btn-soft {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 
+           bg-orange-50 text-[#E0820A] font-semibold text-sm rounded-xl
+           hover:bg-orange-100 transition-all duration-200;
+  }
+
+  /* ── Friendly form controls ── */
+  .input-field {
+    @apply w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl
+           text-sm text-gray-800 placeholder-gray-400
+           focus:bg-white focus:border-[#FF9933] focus:ring-2 focus:ring-orange-100
+           outline-none transition-all duration-200;
+  }
+
+  .select-field {
+    @apply w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl
+           text-sm text-gray-800
+           focus:bg-white focus:border-[#FF9933] focus:ring-2 focus:ring-orange-100
+           outline-none transition-all duration-200 appearance-none cursor-pointer
+           bg-no-repeat bg-[right_0.75rem_center] bg-[length:1.25rem];
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239CA3AF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-gray-600 mb-1.5;
+  }
+
+  /* ── Confidence ── */
+  .confidence-high {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-600;
+  }
+
+  .confidence-medium {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-600;
+  }
+
+  /* ── Scheme card ── */
+  .scheme-result {
+    @apply bg-white rounded-2xl border border-gray-100 p-6
+           hover:border-orange-200 transition-all duration-300;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .scheme-result:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+
+  /* ── Tag pill ── */
+  .tag-pill {
+    @apply text-xs px-2.5 py-1 bg-gray-50 text-gray-500 rounded-full font-medium;
+  }
+
+  /* ── Tab ── */
+  .tab-active {
+    @apply text-[#FF9933] border-b-2 border-[#FF9933] font-semibold;
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ddd; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #bbb; }
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes gentleUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes waveHello {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(14deg); }
+  75% { transform: rotate(-8deg); }
+}
+
+.animate-fade-in { animation: fadeIn 0.5s ease-out; }
+.animate-gentle-up { animation: gentleUp 0.5s ease-out both; }
+.animate-wave { animation: waveHello 1s ease-in-out; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+/* ── Mic recording pulse ── */
+@keyframes warmPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,153,51,0.3); }
+  50% { box-shadow: 0 0 0 14px rgba(255,153,51,0); }
+}
+
+.mic-recording { animation: warmPulse 1.5s infinite; }
